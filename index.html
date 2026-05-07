@@ -12,13 +12,17 @@
         <div>
           <p class="eyebrow">GlowCat</p>
           <h1>光芒小猫</h1>
-          <p class="tagline">你喂它灵力，它把光还给你。</p>
+          <p class="tagline">你喂它勇气团子，它把阳光还给你。</p>
         </div>
         <button class="icon-button" id="openPlan" type="button" aria-label="打开猫咪日记" title="打开猫咪日记">+</button>
       </section>
 
       <section class="cat-stage" aria-label="喂食与陪伴">
-        <canvas id="auraCanvas" aria-label="小猫灵力粒子"></canvas>
+        <div class="sun" aria-hidden="true"></div>
+        <div class="cloud cloud-one" aria-hidden="true"></div>
+        <div class="cloud cloud-two" aria-hidden="true"></div>
+        <div class="cloud cloud-three" aria-hidden="true"></div>
+        <canvas id="auraCanvas" aria-label="小猫阳光粒子"></canvas>
         <div class="cat-wrap" id="catWrap" aria-label="GlowCat 小猫" role="img">
           <div class="cat-illustration" id="catIllustration">
             <div class="ear ear-left"></div>
@@ -42,7 +46,7 @@
           <p id="stateLabel">等待照顾</p>
           <h2 id="quote">喵，你的勇气团子已经准备好啦。</h2>
         </div>
-        <button class="food-orb" id="foodOrb" type="button" aria-label="让小猫吃掉下一颗灵力团子">
+        <button class="food-orb" id="foodOrb" type="button" aria-label="让小猫吃掉下一颗勇气团子">
           <span></span>
         </button>
       </section>

@@ -1,16 +1,16 @@
 const STORAGE_KEY = "glowcat:v1";
 const RESET_HOUR = 4;
 const QUOTES = {
-  Hungry: "喵，你的勇气团子已经准备好啦。",
+  Hungry: "喵，云朵把勇气团子送来啦。",
   Waiting: "既然你这么弱，就只能由我来监督你按时服药了。",
   Feeding: "打勾就行，剩下的团子我自己会吃。",
-  Happy: "哼，做得不错。我把暖光分你一点。",
-  Satisfied: "今天吃饱了。过来，允许你摸摸肚子。",
+  Happy: "哼，做得不错。我把一小片阳光分给你。",
+  Satisfied: "今天的天空放晴了。过来，允许你摸摸肚子。",
 };
 const STATE_LABELS = {
   Hungry: "等待喂食",
   Waiting: "傲娇催促",
-  Feeding: "灵力靠近",
+  Feeding: "团子靠近",
   Happy: "进食反馈",
   Satisfied: "满足陪伴",
 };
@@ -136,7 +136,7 @@ function render() {
 function renderTasks() {
   taskList.innerHTML = "";
   if (!data.plans.length) {
-    taskList.innerHTML = '<div class="empty-state">打开猫咪日记，写下第一颗灵力团子</div>';
+    taskList.innerHTML = '<div class="empty-state">打开猫咪日记，写下第一颗勇气团子</div>';
     return;
   }
 
@@ -303,7 +303,6 @@ function draw(time = 0) {
     requestAnimationFrame(draw);
     return;
   }
-  const isNight = document.body.classList.contains("night");
   ctx.clearRect(0, 0, width, height);
   ctx.globalCompositeOperation = "lighter";
 
@@ -315,8 +314,8 @@ function draw(time = 0) {
     const burstPush = burst * 110 * dpr * (0.4 + particle.layer);
     const x = metrics.cx + Math.cos(angle) * (metrics.rx * particle.radius * aura + ripple + burstPush);
     const y = metrics.cy + Math.sin(angle) * (metrics.ry * particle.radius * aura + ripple + burstPush * 0.72);
-    const alpha = (isNight ? 0.62 : 0.42) * density;
-    const color = isNight ? "145, 238, 220" : particle.layer > 0.62 ? "244, 154, 154" : "255, 214, 110";
+    const alpha = 0.38 * density;
+    const color = particle.layer > 0.66 ? "255, 249, 238" : particle.layer > 0.36 ? "255, 215, 106" : "139, 209, 255";
     ctx.fillStyle = `rgba(${color}, ${alpha})`;
     ctx.beginPath();
     ctx.arc(x, y, particle.size * density, 0, Math.PI * 2);
@@ -405,8 +404,7 @@ function animateFoodToCat(planId) {
 }
 
 function updateAmbience() {
-  const hour = new Date().getHours();
-  document.body.classList.toggle("night", hour >= 19 || hour < 6);
+  document.body.classList.remove("night");
 }
 
 function vibrate(pattern) {
