@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GlowCat 光芒小猫</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="应用栏">
+        <div>
+          <p class="eyebrow">GlowCat</p>
+          <h1>光芒小猫</h1>
+          <p class="tagline">你喂它灵力，它把光还给你。</p>
+        </div>
+        <button class="icon-button" id="openPlan" type="button" aria-label="打开猫咪日记" title="打开猫咪日记">+</button>
+      </section>
+
+      <section class="cat-stage" aria-label="喂食与陪伴">
+        <canvas id="auraCanvas" aria-label="小猫灵力粒子"></canvas>
+        <div class="cat-wrap" id="catWrap" aria-label="GlowCat 小猫" role="img">
+          <div class="cat-illustration" id="catIllustration">
+            <div class="ear ear-left"></div>
+            <div class="ear ear-right"></div>
+            <div class="cat-body">
+              <div class="patch patch-left"></div>
+              <div class="patch patch-right"></div>
+              <div class="eye eye-left"></div>
+              <div class="eye eye-right"></div>
+              <div class="blush blush-left"></div>
+              <div class="blush blush-right"></div>
+              <div class="mouth"></div>
+              <div class="belly-mark"></div>
+            </div>
+            <div class="tail"></div>
+            <div class="paw paw-left"></div>
+            <div class="paw paw-right"></div>
+          </div>
+        </div>
+        <div class="cat-copy">
+          <p id="stateLabel">等待照顾</p>
+          <h2 id="quote">喵，你的勇气团子已经准备好啦。</h2>
+        </div>
+        <button class="food-orb" id="foodOrb" type="button" aria-label="让小猫吃掉下一颗灵力团子">
+          <span></span>
+        </button>
+      </section>
+
+      <section class="today-panel" aria-label="今日喂食">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Caring Home</p>
+            <h3>今日喂食</h3>
+          </div>
+          <span id="progressText">0/0</span>
+        </div>
+        <div class="task-list" id="taskList"></div>
+      </section>
+    </main>
+
+    <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+    <aside class="bottom-sheet" id="planSheet" aria-label="手绘漫画日记" aria-hidden="true">
+      <div class="sheet-grip"></div>
+      <div class="sheet-header">
+        <div>
+          <p class="eyebrow">Manga Diary</p>
+          <h3>手绘漫画日记</h3>
+        </div>
+        <button class="ghost-button" id="closePlan" type="button">收起</button>
+      </div>
+
+      <form class="plan-form" id="planForm">
+        <label>
+          <span>药品名称</span>
+          <input id="medicineName" name="medicineName" autocomplete="off" maxlength="24" required placeholder="例如：维生素 D" />
+        </label>
+        <label>
+          <span>提醒时间</span>
+          <input id="medicineTime" name="medicineTime" type="time" required />
+        </label>
+        <label>
+          <span>剂量</span>
+          <input id="medicineDose" name="medicineDose" autocomplete="off" maxlength="20" placeholder="可选" />
+        </label>
+        <button class="primary-button" type="submit">写进日记</button>
+      </form>
+
+      <div class="plan-list" id="planList"></div>
+    </aside>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
